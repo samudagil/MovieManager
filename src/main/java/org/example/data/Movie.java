@@ -1,5 +1,8 @@
-package org.example.data;// Este es el modelo que vamos a usar
+package org.example.data;
+
+// Este es el modelo que vamos a usar
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Movie {
 
@@ -12,6 +15,17 @@ public class Movie {
     private double stars;
 
     public Movie() {
+    }
+
+    public Movie(int id, String title, String description,
+                 int year, String image_url, String[] genre, double stars) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.year = year;
+        this.image_url = image_url;
+        this.genre = genre;
+        this.stars = stars;
     }
 
     public int getId() {
@@ -75,5 +89,15 @@ public class Movie {
         return title + "\n\tSinopsis=" + description + "\n\tAño=" + year + "\n\tAño=" + image_url + "\n\tGenero=" + Arrays.toString(genre) + "\n\tCalificación=" + stars;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return year == movie.year && Objects.equals(title, movie.title);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, year);
+    }
 }

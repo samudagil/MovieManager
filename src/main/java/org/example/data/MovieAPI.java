@@ -1,4 +1,6 @@
-package org.example.data;// Consumimos una Api Rest de peliculas para practicar
+package org.example.data;
+
+// Consumimos una Api Rest de peliculas para practicar
 import org.example.data.Movie; // cambiar con la ruta correcta
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -18,7 +20,7 @@ public class MovieAPI {
             throws IOException, InterruptedException {
 
         HttpClient client = HttpClient.newHttpClient();
-        
+
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(URL))
                 .GET()
